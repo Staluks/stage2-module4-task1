@@ -13,7 +13,7 @@ public class Employee {
     private String email;
     private String carNumber;
 
-    public Employee(EmployeeBuilder employeeBuilder) {
+    public Employee() {
     }
 
     public String getName() {
@@ -69,41 +69,63 @@ public class Employee {
     }
 
 
-    public static class EmployeeBuilder {
+    public static class EmployeeBuilder implements PeopleBuilder{
+        private Employee employee;
         private String name;
         private String lastName;
         private String position;
         private String phone;
         private String email;
         private String carNumber;
-        public EmployeeBuilder name(String a) {
-                this.name = a;
-                return this;
-            }
-        public EmployeeBuilder lastName(String b) {
-            this.lastName = b;
-            return this;
-        }
-        public EmployeeBuilder position(String c) {
-            this.position = c;
-            return this;
-        }
-        public EmployeeBuilder phone(String d) {
-            this.phone = d;
-            return this;
-        }
-        public EmployeeBuilder email(String e) {
-            this.email = e;
-            return this;
-        }
-        public EmployeeBuilder carNumber(String f) {
-            this.carNumber = f;
-            return this;
-        }
-        public Employee build() {
-            return new Employee(this);
+
+        public EmployeeBuilder(){
+            this.employee = new Employee();
         }
 
+        @Override
+        public void setName(String name) {
+            employee.setName(name);
         }
+
+        @Override
+        public void setLastName(String lastName) {
+            employee.setLastName(lastName);
+        }
+
+        @Override
+        public void setPosition(String position) {
+            employee.setPosition(position);
+        }
+
+        @Override
+        public void setPhone(String phone) {
+            employee.setPhone(phone);
+        }
+
+        @Override
+        public void setEmail(String email) {
+            employee.setEmail(email);
+        }
+
+        @Override
+        public void setCarNumber(String carNumber) {
+            employee.setCarNumber(carNumber);
+        }
+
+        @Override
+        public Employee getEmployee() {
+            return this.employee;
+        }
+    }
+    public interface PeopleBuilder{
+        void setName(String name);
+        void setLastName(String lastName);
+        void setPosition(String position);
+        void setPhone(String phone);
+        void setEmail(String email);
+        void setCarNumber(String carNumber);
+        Employee getEmployee();
+
+    }
 
 }
