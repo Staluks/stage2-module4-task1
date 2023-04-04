@@ -13,7 +13,7 @@ public class Employee {
     private String email;
     private String carNumber;
 
-    public Employee() {
+    public Employee(EmployeeBuilder employeeBuilder) {
     }
 
     public String getName() {
@@ -70,5 +70,40 @@ public class Employee {
 
 
     public static class EmployeeBuilder {
+        private String name;
+        private String lastName;
+        private String position;
+        private String phone;
+        private String email;
+        private String carNumber;
+        public EmployeeBuilder name(String a) {
+                this.name = a;
+                return this;
+            }
+        public EmployeeBuilder lastName(String b) {
+            this.lastName = b;
+            return this;
         }
+        public EmployeeBuilder position(String c) {
+            this.position = c;
+            return this;
+        }
+        public EmployeeBuilder phone(String d) {
+            this.phone = d;
+            return this;
+        }
+        public EmployeeBuilder email(String e) {
+            this.email = e;
+            return this;
+        }
+        public EmployeeBuilder carNumber(String f) {
+            this.carNumber = f;
+            return this;
+        }
+        public Employee build() {
+            return new Employee(this);
+        }
+
+        }
+
 }
